@@ -1,0 +1,67 @@
+[settings]
+vms = RouterA1, RouterA2, RouterB1, RouterC1, RouterC2, RouterC3, RouterD1, HostA1, HostA2, HostB1, HostC1, HostC2, HostC3
+
+[RouterA1]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.166/26, net:VLAN1002
+
+[RouterA2]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.167/26, net:VLAN1002
+
+[RouterB1]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.168/26, net:VLAN1002
+
+[RouterC1]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.169/26, net:VLAN1002
+
+[RouterC2]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.170/26, net:VLAN1002
+
+[RouterC3]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.171/26, net:VLAN1002
+
+[RouterD1]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.172/26, net:VLAN1002
+
+[HostA1]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.173/26, net:VLAN1002
+
+[HostA2]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.174/26, net:VLAN1002
+
+[HostB1]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.175/26, net:VLAN1002
+
+[HostC1]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.176/26, net:VLAN1002
+
+[HostC2]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.177/26, net:VLAN1002
+
+[HostC3]
+user = vyatta
+password = vyatta
+eth0 = 172.18.93.178/26, net:VLAN1002
