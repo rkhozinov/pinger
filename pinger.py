@@ -60,7 +60,7 @@ def parse(config_path):
 
 
 def ping(host):
-    if args.count == 2:
+    if args.count <= 2:
         command = 'ping -c %s %s%s' % (args.count, host['address'], '' if not args.verbose else ' > /dev/null')
         host['is_available'] = False if os.system(command) else True
     else:
