@@ -75,8 +75,8 @@ def ping_hosts(hosts_list):
     return hosts_list
 
 
-if args.configure and os.path.exists(args.configure):
-    hosts = parse(args.configure)
+if args.cnofiguration and os.path.exists(args.cnofiguration):
+    hosts = parse(args.cnofiguration)
     print('Waiting for response...')
     hosts = ping_hosts(hosts)
     for name, data in hosts.items():
