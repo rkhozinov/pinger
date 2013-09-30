@@ -15,7 +15,6 @@
 
 import argparse
 import configparser
-from genericpath import exists
 import os
 import subprocess
 import threading
@@ -76,7 +75,7 @@ def ping_hosts(hosts_list):
     return hosts_list
 
 
-if args.configure and exists(args.configure):
+if args.configure and os.path.exists(args.configure):
     hosts = parse(args.configure)
     print('Waiting for response...')
     hosts = ping_hosts(hosts)
