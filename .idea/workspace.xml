@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e971d96-9121-4ab0-82c1-ca431785ee07" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pinger.py" afterPath="$PROJECT_DIR$/pinger.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pinger.iws" />
@@ -28,7 +29,7 @@
       <file leaf-file-name="pinger.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pinger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="0" selection-start="3333" selection-end="3333" vertical-scroll-proportion="0.8735363" vertical-offset="892" max-vertical-offset="1746">
+            <state line="11" column="10" selection-start="472" selection-end="472" vertical-scroll-proportion="0.23185012" vertical-offset="0" max-vertical-offset="1710">
               <folding>
                 <element signature="e#577#592#0" expanded="true" />
               </folding>
@@ -290,7 +291,11 @@
       <created>1380556842056</created>
       <updated>1380556842056</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added required configuration parameter">
+      <created>1380556852290</created>
+      <updated>1380556852290</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -416,7 +421,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pinger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="0" selection-start="3333" selection-end="3333" vertical-scroll-proportion="0.8735363" vertical-offset="892" max-vertical-offset="1746">
+        <state line="11" column="10" selection-start="472" selection-end="472" vertical-scroll-proportion="0.23185012" vertical-offset="0" max-vertical-offset="1710">
           <folding>
             <element signature="e#577#592#0" expanded="true" />
           </folding>

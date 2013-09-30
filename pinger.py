@@ -19,8 +19,6 @@ from genericpath import exists
 import os
 import subprocess
 import threading
-from turtledemo.chaos import f
-from aptdaemon.pkenums import ERROR_PACKAGE_FAILED_TO_CONFIGURE
 
 CONTROL_IFACE = 'eth0'
 SETTINGS = 'settings'
