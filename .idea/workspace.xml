@@ -29,7 +29,7 @@
       <file leaf-file-name="pinger.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pinger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="36" selection-start="2339" selection-end="2339" vertical-scroll-proportion="0.37" vertical-offset="892" max-vertical-offset="1692">
+            <state line="82" column="26" selection-start="2932" selection-end="2932" vertical-scroll-proportion="0.73" vertical-offset="892" max-vertical-offset="1692">
               <folding>
                 <element signature="e#577#592#0" expanded="true" />
               </folding>
@@ -340,7 +340,11 @@
       <created>1380557753297</created>
       <updated>1380557753297</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Increase ping count to 2">
+      <created>1380557800301</created>
+      <updated>1380557800301</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -478,7 +482,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pinger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="36" selection-start="2339" selection-end="2339" vertical-scroll-proportion="0.37" vertical-offset="892" max-vertical-offset="1692">
+        <state line="82" column="26" selection-start="2932" selection-end="2932" vertical-scroll-proportion="0.73" vertical-offset="892" max-vertical-offset="1692">
           <folding>
             <element signature="e#577#592#0" expanded="true" />
           </folding>
