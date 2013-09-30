@@ -81,7 +81,7 @@ if args.configuration and os.path.exists(args.configuration):
     hosts = ping_hosts(hosts)
     for name, data in hosts.items():
         if args.count == 1:
-            print("%s is%s available on %s" % (name, '' if data['is_available'] else ' not', data['address']))
+            print("%s is%s available on %s" % (name, '' if data['is_available'] else ' NOT', data['address']))
         else:
             print(name.center(60, '-'))
             for ping_response in data['response']:
