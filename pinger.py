@@ -15,19 +15,23 @@
 
 import argparse
 import configparser
+from genericpath import exists
 import os
 import subprocess
 import threading
+from turtledemo.chaos import f
+from aptdaemon.pkenums import ERROR_PACKAGE_FAILED_TO_CONFIGURE
 
 CONTROL_IFACE = 'eth0'
 SETTINGS = 'settings'
 HOSTS = 'vms'
 
 parser = argparse.ArgumentParser(description='''Program for deployment some topology for test needing''')
+parser.add_argument('configuration', description='Configuration with list of host or \'esxds\' type')
 parser.add_argument('-v', '--verbose', action='store_false')
 parser.add_argument('-c', '--count', default=1, type=int)
-
 args = parser.parse_args()
+
 
 def convert(input, type):
     # todo: add existence validate
@@ -74,8 +78,8 @@ def ping_hosts(hosts_list):
     return hosts_list
 
 
-if __name__ == '__main__':
-    hosts = parse('etc/esx_config')
+if args.configure and exists(args.configure):
+    hosts = parse(args.configure)
     print('Waiting for response...')
     hosts = ping_hosts(hosts)
     for name, data in hosts.items():
