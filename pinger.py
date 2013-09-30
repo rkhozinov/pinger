@@ -26,7 +26,7 @@ HOSTS = 'vms'
 parser = argparse.ArgumentParser(description='''Program for deployment some topology for test needing''')
 parser.add_argument('configuration', help='Configuration with list of host or \'esxds\' type')
 parser.add_argument('-v', '--verbose', action='store_false')
-parser.add_argument('-c', '--count', default=1, type=int)
+parser.add_argument('-c', '--count', default=2, type=int)
 args = parser.parse_args()
 
 
@@ -60,7 +60,7 @@ def parse(config_path):
 
 
 def ping(host):
-    if args.count == 1:
+    if args.count == 2:
         command = 'ping -c %s %s%s' % (args.count, host['address'], '' if not args.verbose else ' > /dev/null')
         host['is_available'] = False if os.system(command) else True
     else:
