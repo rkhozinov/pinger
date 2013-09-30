@@ -64,7 +64,7 @@ def ping(host):
         command = 'ping -c %s %s%s' % (args.count, host['address'], '' if not args.verbose else ' > /dev/null')
         host['is_available'] = False if os.system(command) else True
     else:
-        command = ["/bin/ping", "-c%s" % args.count, host['address']]
+        command = ["/bin/ping", "-c %s" % args.count, host['address']]
         host['response'] = subprocess.Popen(command, stdout=subprocess.PIPE).stdout.readlines()
 
 
