@@ -29,8 +29,10 @@
       <file leaf-file-name="pinger.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pinger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="19" selection-start="612" selection-end="612" vertical-scroll-proportion="0.33723652" vertical-offset="0" max-vertical-offset="1692">
-              <folding />
+            <state line="26" column="41" selection-start="866" selection-end="866" vertical-scroll-proportion="0.5480094" vertical-offset="0" max-vertical-offset="1692">
+              <folding>
+                <element signature="e#577#592#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -306,7 +308,11 @@
       <created>1380556930249</created>
       <updated>1380556930249</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Changed file exists checking method">
+      <created>1380557019640</created>
+      <updated>1380557019640</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -361,7 +367,8 @@
     </option>
     <MESSAGE value="Added required configuration parameter" />
     <MESSAGE value="Removed unused imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unused imports" />
+    <MESSAGE value="Changed file exists checking method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed file exists checking method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -375,7 +382,9 @@
     <entry file="file://$PROJECT_DIR$/pinger.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="72" column="25" selection-start="2565" selection-end="2565" vertical-scroll-proportion="0.0" vertical-offset="1296" max-vertical-offset="1656">
-          <folding />
+          <folding>
+            <element signature="e#577#592#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -438,8 +447,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pinger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="19" selection-start="612" selection-end="612" vertical-scroll-proportion="0.33723652" vertical-offset="0" max-vertical-offset="1692">
-          <folding />
+        <state line="26" column="41" selection-start="866" selection-end="866" vertical-scroll-proportion="0.5480094" vertical-offset="0" max-vertical-offset="1692">
+          <folding>
+            <element signature="e#577#592#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

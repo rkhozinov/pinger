@@ -24,7 +24,7 @@ SETTINGS = 'settings'
 HOSTS = 'vms'
 
 parser = argparse.ArgumentParser(description='''Program for deployment some topology for test needing''')
-parser.add_argument('configuration', description='Configuration with list of host or \'esxds\' type')
+parser.add_argument('configuration', help='Configuration with list of host or \'esxds\' type')
 parser.add_argument('-v', '--verbose', action='store_false')
 parser.add_argument('-c', '--count', default=1, type=int)
 args = parser.parse_args()
