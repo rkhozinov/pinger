@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # coding=utf-8
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,10 @@
 # limitations under the License.
 
 import argparse
-import configparser
+try:
+    import configparser
+except:
+    import ConfigParser as configparser
 import os
 import subprocess
 import threading
