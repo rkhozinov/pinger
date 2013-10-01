@@ -62,11 +62,11 @@ def parse(config_path):
 def ping(host):
     if args.count <= 2:
         command = 'ping -c %s %s%s' % (args.count, host['address'], '' if not args.verbose else ' > /dev/null')
-        host['is_available'] = 0 if os.system(command) else 1
+        host['is_available'] = False if os.system(command) else True
     else:
         command = ["/bin/ping", "-c %s" % args.count, host['address']]
         host['response'] = subprocess.Popen(command, stdout=subprocess.PIPE).stdout.readlines()
-        host['is_available'] = int(os.getenv('?'))
+        host['is_available'] = bool(os.getenv('?'))
 
 
 def ping_hosts(hosts_list):
@@ -88,8 +88,8 @@ if args.configuration and os.path.exists(args.configuration):
             print(name.center(60, '-'))
             for ping_response in data['response']:
                 print(ping_response.decode('UTF-8').replace('\n', ''))
-        hosts_availability = hosts['is_available']
-    exit(hosts_availability)
+        hosts_availability = data['is_available']
+    exit(not hosts_availability)
 else:
     print('Configuration not found on path: %s' % args.configuration)
     exit(1)
