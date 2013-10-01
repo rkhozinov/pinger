@@ -24,7 +24,7 @@ SETTINGS = 'settings'
 HOSTS = 'vms'
 
 parser = argparse.ArgumentParser(description='''Program for deployment some topology for test needing''')
-parser.add_argument('configuration', help='Configuration with list of host or \'esxds\' type')
+parser.add_argument('configuration', help='Path to the configuration file with list of host or \'esxds\' type')
 parser.add_argument('-v', '--verbose', action='store_false')
 parser.add_argument('-c', '--count', default=2, type=int)
 args = parser.parse_args()
@@ -62,10 +62,11 @@ def parse(config_path):
 def ping(host):
     if args.count <= 2:
         command = 'ping -c %s %s%s' % (args.count, host['address'], '' if not args.verbose else ' > /dev/null')
-        host['is_available'] = False if os.system(command) else True
+        host['is_available'] = 0 if os.system(command) else 1
     else:
         command = ["/bin/ping", "-c %s" % args.count, host['address']]
         host['response'] = subprocess.Popen(command, stdout=subprocess.PIPE).stdout.readlines()
+        host['is_available'] = int(os.getenv('?'))
 
 
 def ping_hosts(hosts_list):
@@ -79,6 +80,7 @@ if args.configuration and os.path.exists(args.configuration):
     hosts = parse(args.configuration)
     print('Waiting for response...')
     hosts = ping_hosts(hosts)
+    hosts_availability = False
     for name, data in hosts.items():
         if args.count <= 2:
             print("%s is%s available on %s" % (name, '' if data['is_available'] else ' NOT', data['address']))
@@ -86,3 +88,9 @@ if args.configuration and os.path.exists(args.configuration):
             print(name.center(60, '-'))
             for ping_response in data['response']:
                 print(ping_response.decode('UTF-8').replace('\n', ''))
+        hosts_availability = hosts['is_available']
+    exit(hosts_availability)
+else:
+    print('Configuration not found on path: %s' % args.configuration)
+    exit(1)
+
