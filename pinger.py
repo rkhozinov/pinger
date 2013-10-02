@@ -108,4 +108,3 @@ if os.path.exists(args.configuration):
 else:
     print('Configuration not found on path: %s' % args.configuration)
     exit(1)
-
