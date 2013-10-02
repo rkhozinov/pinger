@@ -13,6 +13,9 @@
 # limitations under the License.
 
 import argparse
+
+COUNT_WITHOUT_OUTPUT = 2
+
 try:
     import configparser
 except:
@@ -24,6 +27,7 @@ import threading
 CONTROL_IFACE = 'eth0'
 SETTINGS = 'settings'
 HOSTS = 'vms'
+LINE_WIDTH = 60
 
 parser = argparse.ArgumentParser(description='''Program for deployment some topology for test needing''')
 parser.add_argument('configuration', help='Path to the configuration file with list of host or \'esxds\' type')
@@ -56,19 +60,23 @@ def parse(config_path):
                 hosts_list[name] = dict(address=address)
     except configparser.Error as error:
         print(error.message)
-        return 1
+        exit(1)
     else:
         return hosts_list
 
 
 def ping(host):
-    if args.count <= 2:
-        command = 'ping -c %s %s%s' % (args.count, host['address'], '' if not args.verbose else ' > /dev/null')
-        host['is_available'] = False if os.system(command) else True
-    else:
-        command = ["/bin/ping", "-c %s" % args.count, host['address']]
-        host['response'] = subprocess.Popen(command, stdout=subprocess.PIPE).stdout.readlines()
-        host['is_available'] = bool(os.getenv('?'))
+    command = ["/bin/ping", "-c %s" % args.count, host['address']]
+
+    executor = subprocess.Popen(command, stdout=subprocess.PIPE)
+
+    # Store response
+    host['response'] = None if args.count <= COUNT_WITHOUT_OUTPUT else executor.stdout.readlines()
+
+    executor.communicate()
+
+    # Gets exit code
+    host['is_available'] = bool(not executor.returncode)
 
 
 def ping_hosts(hosts_list):
@@ -78,20 +86,25 @@ def ping_hosts(hosts_list):
     return hosts_list
 
 
-if args.configuration and os.path.exists(args.configuration):
+if os.path.exists(args.configuration):
     hosts = parse(args.configuration)
     print('Waiting for response...')
     hosts = ping_hosts(hosts)
-    hosts_availability = False
+    hosts_availability = list()
+
     for name, data in hosts.items():
-        if args.count <= 2:
-            print("%s is%s available on %s" % (name, '' if data['is_available'] else ' NOT', data['address']))
+
+        hosts_availability.append(data['is_available'])
+
+        if args.count <= COUNT_WITHOUT_OUTPUT:
+            print("%s is%s available on %s" %
+                  (name, '' if data['is_available'] else ' NOT', data['address']))
         else:
-            print(name.center(60, '-'))
+            print(name.center(LINE_WIDTH, '-'))
             for ping_response in data['response']:
                 print(ping_response.decode('UTF-8').replace('\n', ''))
-        hosts_availability = data['is_available']
-    exit(not hosts_availability)
+
+    exit(0 if all(hosts_availability) else 1)
 else:
     print('Configuration not found on path: %s' % args.configuration)
     exit(1)
