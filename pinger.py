@@ -14,8 +14,6 @@
 
 import argparse
 
-COUNT_WITHOUT_OUTPUT = 2
-
 try:
     import configparser
 except:
@@ -24,6 +22,7 @@ import os
 import subprocess
 import threading
 
+DEFAULT_COUNT = 3
 CONTROL_IFACE = 'eth0'
 SETTINGS = 'settings'
 HOSTS = 'vms'
@@ -31,8 +30,8 @@ LINE_WIDTH = 60
 
 parser = argparse.ArgumentParser(description='''Program for deployment some topology for test needing''')
 parser.add_argument('configuration', help='Path to the configuration file with list of host or \'esxds\' type')
-parser.add_argument('-v', '--verbose', action='store_false')
-parser.add_argument('-c', '--count', default=2, type=int)
+parser.add_argument('-v', '--verbose', default=False)
+parser.add_argument('-c', '--count', default=DEFAULT_COUNT, type=int)
 args = parser.parse_args()
 
 
@@ -67,14 +66,10 @@ def parse(config_path):
 
 def ping(host):
     command = ["/bin/ping", "-c %s" % args.count, host['address']]
-
     executor = subprocess.Popen(command, stdout=subprocess.PIPE)
-
     # Store response
-    host['response'] = None if args.count <= COUNT_WITHOUT_OUTPUT else executor.stdout.readlines()
-
+    host['response'] = executor.stdout.readlines() if args.verbose else None
     executor.communicate()
-
     # Gets exit code
     host['is_available'] = bool(not executor.returncode)
 
@@ -90,13 +85,11 @@ if os.path.exists(args.configuration):
     hosts = parse(args.configuration)
     print('Waiting for response...')
     hosts = ping_hosts(hosts)
-    hosts_availability = list()
+    hosts_available = list()
 
     for name, data in hosts.items():
-
-        hosts_availability.append(data['is_available'])
-
-        if args.count <= COUNT_WITHOUT_OUTPUT:
+        hosts_available.append(data['is_available'])
+        if not args.verbose:
             print("%s is%s available on %s" %
                   (name, '' if data['is_available'] else ' NOT', data['address']))
         else:
@@ -104,7 +97,7 @@ if os.path.exists(args.configuration):
             for ping_response in data['response']:
                 print(ping_response.decode('UTF-8').replace('\n', ''))
 
-    exit(0 if all(hosts_availability) else 1)
+    exit(0 if all(hosts_available) else 1)
 else:
     print('Configuration not found on path: %s' % args.configuration)
     exit(1)
